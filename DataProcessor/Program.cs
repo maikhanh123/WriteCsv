@@ -1,13 +1,7 @@
 ﻿using System;
-using static System.Console;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Collections.Concurrent;
-using System.Threading;
 using System.Runtime.Caching;
+using static System.Console;
 
 namespace DataProcessor
 {
@@ -33,7 +27,7 @@ namespace DataProcessor
 
                 using (var inputFileWatcher = new FileSystemWatcher(directoryToWatch))
                 {
-                    inputFileWatcher.IncludeSubdirectories = false;
+                    inputFileWatcher.IncludeSubdirectories = false; //don't work with sub director
                     inputFileWatcher.InternalBufferSize = 32768; // 32 KB
                     inputFileWatcher.Filter = "*.*";
                     inputFileWatcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastWrite;
