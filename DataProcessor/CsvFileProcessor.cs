@@ -53,7 +53,7 @@ namespace DataProcessor
 
                     bool isLastRecord = i == recordsArray.Length - 1;
 
-                    if (!isLastRecord)
+                    if (!isLastRecord)  //if isLastRecord false goto NextRecord with next line, true not goto next line
                     {
                         csvWriter.NextRecord();
                     }
