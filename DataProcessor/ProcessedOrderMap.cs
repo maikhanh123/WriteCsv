@@ -9,7 +9,8 @@ namespace DataProcessor
             AutoMap();
 
             Map(m => m.Customer).Name("CustomerNumber");
-            Map(m => m.Amount).Name("Quantity").TypeConverter<RomanTypeConverter>();
+//            Map(m => m.Amount).Name("Quantity").TypeConverter<RomanTypeConverter>();
+            Map(m => m.Amount).Name("Quantity");
         }
     }
 }

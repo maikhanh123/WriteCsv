@@ -1,11 +1,8 @@
-﻿using System;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CsvHelper;
-using CsvHelper.Configuration;
 
 namespace DataProcessor
 {
@@ -27,11 +24,18 @@ namespace DataProcessor
             using (StreamWriter output = File.CreateText(OutputFilePath))
             using (var csvWriter = new CsvWriter(output))
             {
-                csvReader.Configuration.TrimOptions = TrimOptions.Trim;
+                csvReader.Configuration.TrimOptions = TrimOptions.Trim; //trimm all white space around
                 csvReader.Configuration.Comment = '@'; // Default is '#'
                 csvReader.Configuration.AllowComments = true;
+                //csvReader.Configuration.IgnoreBlankLines = true;  //not check Blank line
+                //csvReader.Configuration.Delimiter = ";";          // field seperator by ";"
+                //csvReader.Configuration.HasHeaderRecord = false;  //file no have header 
+                //On the csv will no have header so they will not know .OrderNumber, must be change to .Field1, .Field2
+                //csvReader.Configuration.HeaderValidated = null;
+                //csvReader.Configuration.MissingFieldFound = null;
                 csvReader.Configuration.RegisterClassMap<ProcessedOrderMap>();
 
+                //IEnumerable<dynamic> records = csvReader.GetRecords<dynamic>();
                 IEnumerable<ProcessedOrder> records = csvReader.GetRecords<ProcessedOrder>();
 
                 //csvWriter.WriteRecords(records);

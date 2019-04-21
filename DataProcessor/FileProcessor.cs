@@ -1,6 +1,6 @@
-﻿using static System.Console;
+﻿using System;
 using System.IO;
-using System;
+using static System.Console;
 
 namespace DataProcessor
 {
